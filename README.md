@@ -60,7 +60,7 @@ public class PetController {
   private EntityMerger<et> merger = new EntityMerger();
     
   @PutMapping("/pets/{id}", consumes = "application/x-www-form-urlencoded")
-  public Pet update(@ModelAttribute Project patch, @PathVariable String id, HttpServletRequest request) {
+  public Pet update(@ModelAttribute Pet patch, @PathVariable String id, HttpServletRequest request) {
     Pet original = ...;  // Get original from backend
     List<String> fields = fieldConverter.translate(request.getParameterMap()));
     Pet merge = this.merger.mergeEntities(original, patch, fields);
