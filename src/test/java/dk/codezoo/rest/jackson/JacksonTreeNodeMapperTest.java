@@ -1,15 +1,11 @@
-package dk.codezo.rest.jackson;
+package dk.codezoo.rest.jackson;
 
-import dk.codezo.rest.DummyEntity;
-import dk.codezoo.rest.jackson.JacksonTreeNodeMapper;
-import dk.codezoo.rest.jackson.TreeNodeHolder;
-import dk.codezoo.rest.jackson.TreeNodePropertyReferenceConverter;
+import dk.codezoo.rest.DummyEntity;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.List;
 
 public class JacksonTreeNodeMapperTest {
 

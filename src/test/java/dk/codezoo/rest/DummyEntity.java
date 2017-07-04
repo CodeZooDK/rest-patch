@@ -1,4 +1,4 @@
-package dk.codezo.rest;
+package dk.codezoo.rest;
 
 import java.util.ArrayList;
 import java.util.List;

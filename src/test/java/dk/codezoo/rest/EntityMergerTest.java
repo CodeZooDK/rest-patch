@@ -1,6 +1,5 @@
-package dk.codezo.rest;
+package dk.codezoo.rest;
 
-import dk.codezoo.rest.EntityMerger;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
