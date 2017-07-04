@@ -68,4 +68,4 @@ public class PetController {
   } 
 }
 ```
-The above example allows us to send just the fields we want to update via cUrl, fx. `curl -X PUT -d name=Bessie http://server/pets/{id}`
+The above example allows us to send just the fields we want to update via cUrl, fx. `curl -X PUT -d name=Bessie http://server/pets/{id}`, without overwriting other fields.
