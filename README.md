@@ -38,13 +38,34 @@ public class PetController {
   private TreeNodePropertyReferenceConverter fieldConverter = new TreeNodePropertyReferenceConverter();
   private EntityMerger<et> merger = new EntityMerger();
     
-  @PutMapping("/pets/{id})
+  @PutMapping("/pets/{id}")
   public Pet update(@RequestBody Pet patch, @PathVariable String id) {
     Pet original = ...;  // Get original from backend
     List<String> fields = fieldConverter.translate(TreeNodeHolder.get());
-    Pet merge = this.merger.mergeEntities(original, patch, dirtyFields);
+    Pet merge = this.merger.mergeEntities(original, patch, fields);
     ... // Save merge to backend
   } 
 }
 ```
 The above example allows us to send just the fields we want to update, fx. `{"name": "Bessie"}`, without overwriting other fields.
+
+It gives you the same flexibility with FORM input which is handy when it comes to supporting access to the API via cUrl.
+
+__FORM Example (Spring Boot)__
+```Java
+@RestController
+public class PetController {
+
+  private FormPropertyReferenceConverter fieldConverter = new FormPropertyReferenceConverter();
+  private EntityMerger<et> merger = new EntityMerger();
+    
+  @PutMapping("/pets/{id}", consumes = "application/x-www-form-urlencoded")
+  public Pet update(@ModelAttribute Project patch, @PathVariable String id, HttpServletRequest request) {
+    Pet original = ...;  // Get original from backend
+    List<String> fields = fieldConverter.translate(request.getParameterMap()));
+    Pet merge = this.merger.mergeEntities(original, patch, fields);
+    ... // Save merge to backend
+  } 
+}
+```
+The above example allows us to send just the fields we want to update via cUrl, fx. `curl -X PUT -d name=Bessie http://server/pets/{id}`
