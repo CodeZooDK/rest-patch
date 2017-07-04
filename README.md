@@ -3,6 +3,8 @@
 This library aims to aid in supporting patching for requests in Java-based RESTFUL webservices. It is not tied into Spring in anyway, but all examples here are shown using Spring Boot. It aims to support the logical way of handling REST in services like [Stripe](https://stripe.com) and [Previsto](https://previsto.com) and hence it support JSON and FORM based requests.
 
 ## What does it do?
+
+### Merging
 First of all it allows you to patch a POJO upon another POJO of same type based on a list of dirty fields. You simply gather a list of dirty fields which you want to be patched from one POJO to another. You use the `EntityMerger` for this purpose as shown below.
 
 __Merge Example__
@@ -25,6 +27,7 @@ public void main() {
 }
 ```
 
+### Resolve dirty fields
 Second, it allows you to gather the dirty fields from JSON(via Jackson) and FORM(via Java Map) requests. Checkout the following examples:
 
 __JSON Example (Spring Boot)__
